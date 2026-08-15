@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DATEIS</string>
+    <string name="get_started">Get started</string>
+    <string name="login_continue">Log in to continue</string>
 </resources>
