@@ -2,4 +2,6 @@
     <string name="app_name">DATEIS</string>
     <string name="get_started">Get started</string>
     <string name="login_continue">Log in to continue</string>
+    <string name="login_yandex">Log in with Yandex</string>
+    <string name="login_vk">Log in with Vkontakte</string>
 </resources>
