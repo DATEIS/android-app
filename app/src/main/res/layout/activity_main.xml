@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="750dp"
     android:background="@color/white"
+    android:stateListAnimator="@animator/active"
     tools:context=".MainActivity">
 
 
@@ -76,6 +84,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/register_btn"
         android:clickable="true"
+        android:stateListAnimator="@animator/active"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -103,6 +112,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/vkontakte_login"
         android:clickable="true"
+        android:stateListAnimator="@animator/active"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create">
@@ -184,6 +194,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/login_btn"
         android:clickable="true"
+        android:stateListAnimator="@animator/active"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
@@ -221,6 +232,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/login_btn"
         android:clickable="true"
+        android:stateListAnimator="@animator/active"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
@@ -259,6 +271,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/yandex_login"
         android:clickable="true"
+        android:stateListAnimator="@animator/active"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -306,3 +319,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
