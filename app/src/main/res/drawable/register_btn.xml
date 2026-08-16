@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:id="@id/normal">
-        <layer-list>
-            <item>
-                <shape>
-                    <solid android:color="#B53B7B" />
-                    <corners android:radius="60dp" />
-                </shape>
-            </item>
-            <item>
-                <shape>
-                    <solid android:color="#33000000" />
-                    <corners android:radius="60dp" />
-                </shape>
-            </item>
-        </layer-list>
-    </item>
-    <item android:id="@id/pressed">
-        <layer-list>
-            <item>
-                <shape>
-                    <solid android:color="#D3468F" />
-                    <corners android:radius="60dp" />
-                </shape>
-            </item>
-        </layer-list>
-    </item>
-    <transition>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    </transition>
-</selector>
+                <solid android:color="#B53B7B" />
+                <corners android:radius="60dp" />
+
+
+</shape>
