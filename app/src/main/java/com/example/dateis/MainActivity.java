@@ -1,6 +1,15 @@
 package com.example.dateis;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +24,127 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        View yandex_btn = findViewById(R.id.create);
+        View vk_btn = findViewById(R.id.constraintLayout2);
+        setupPressedAnimation(yandex_btn);
+        setupPressedAnimation(vk_btn);
+
+        setupPressedAnimation(
+                findViewById(R.id.constraintLayout4),
+                Color.parseColor("#F2F3F5"),
+                Color.parseColor("#D8D8D8")
+        );
+
+        setupPressedAnimation(
+                findViewById(R.id.constraintLayout5),
+                Color.parseColor("#F2F3F5"),
+                Color.parseColor("#D8D8D8")
+        );
+
+        setupPressedAnimation(
+                findViewById(R.id.create2),
+                Color.parseColor("#D3468F"),
+                Color.parseColor("#B53B7B")
+        );
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void setupPressedAnimation(View button) {
+
+        LayerDrawable layers = (LayerDrawable) button.getBackground();
+        GradientDrawable overlay =
+                (GradientDrawable) layers.getDrawable(1);
+
+        overlay.setColor(Color.parseColor("#80000000"));
+
+        button.setOnTouchListener((v, event) -> {
+
+            int fromColor;
+            int toColor;
+
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+                fromColor = Color.parseColor("#80000000");
+                toColor = Color.parseColor("#99000000");
+
+            } else if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+
+                fromColor = Color.parseColor("#99000000");
+                toColor = Color.parseColor("#80000000");
+
+            } else {
+                return false;
+            }
+
+            ValueAnimator animator = ValueAnimator.ofObject(
+                    new ArgbEvaluator(),
+                    fromColor,
+                    toColor
+            );
+
+            animator.setDuration(100);
+
+            animator.addUpdateListener(animation -> {
+                overlay.setColor((int) animation.getAnimatedValue());
+            });
+
+            animator.start();
+
+            return false;
+        });
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void setupPressedAnimation(
+            View button,
+            int normalColor,
+            int pressedColor
+    ) {
+        GradientDrawable background =
+                (GradientDrawable) button.getBackground().mutate();
+
+        background.setColor(normalColor);
+
+        button.setOnTouchListener((v, event) -> {
+
+            int from;
+            int to;
+
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+                from = normalColor;
+                to = pressedColor;
+
+            } else if (event.getAction() == MotionEvent.ACTION_UP ||
+                    event.getAction() == MotionEvent.ACTION_CANCEL) {
+
+                from = pressedColor;
+                to = normalColor;
+
+            } else {
+                return false;
+            }
+
+            ValueAnimator animator = ValueAnimator.ofObject(
+                    new ArgbEvaluator(),
+                    from,
+                    to
+            );
+
+            animator.setDuration(100);
+
+            animator.addUpdateListener(animation -> {
+                background.setColor(
+                        (int) animation.getAnimatedValue()
+                );
+            });
+
+            animator.start();
+
+            return false;
         });
     }
 }
+
