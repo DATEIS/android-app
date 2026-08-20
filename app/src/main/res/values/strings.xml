@@ -4,4 +4,5 @@
     <string name="login_continue">Log in to continue</string>
     <string name="login_yandex">Log in with Yandex</string>
     <string name="login_vk">Log in with Vkontakte</string>
+    <string name="terms">By continuing you agree to  Terms of Service &amp; Privacy Policy</string>
 </resources>
