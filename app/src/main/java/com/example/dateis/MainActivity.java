@@ -3,6 +3,7 @@ package com.example.dateis;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -10,6 +11,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +19,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import kotlin.time.Instant;
+
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         View yandex_btn = findViewById(R.id.create);
         View vk_btn = findViewById(R.id.constraintLayout2);
+        View create_account = findViewById(R.id.create2);
         setupPressedAnimation(yandex_btn);
         setupPressedAnimation(vk_btn);
 
@@ -123,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
                 from = pressedColor;
                 to = normalColor;
 
+                if (button.getId() == R.id.create2) {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+
             } else {
                 return false;
             }
@@ -133,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     to
             );
 
-            animator.setDuration(100);
+            animator.setDuration(150);
 
             animator.addUpdateListener(animation -> {
                 background.setColor(
